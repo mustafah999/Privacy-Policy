@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Use Cairo font for Arabic text and Inter for others */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        :lang(ar) {
+            font-family: 'Cairo', sans-serif;
+        }
+        /* Simple transition for view switching */
+        .view {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        .view-hidden {
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none;
+            position: absolute;
+        }
+        .view-visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+
+    <div class="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
+        <!-- Main View -->
+        <div id="mainView" class="view view-visible w-full p-4">
+            <div class="text-center">
+                <!-- App Title -->
+                <h1 class="text-4xl font-bold mb-10 text-[#0279d7]">Habal Wacky AI</h1>
+                <!-- English Button -->
+                <button id="showEnglishPolicy" class="w-72 max-w-full bg-[#0279d7] text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:bg-[#026ac0] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0279d7] transition-all duration-300 mb-5 text-lg">
+                    Privacy Policy
+                </button>
+                <!-- Arabic Button -->
+                <button id="showArabicPolicy" class="w-72 max-w-full bg-[#0279d7] text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-[#026ac0] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0279d7] transition-all duration-300 text-lg">
+                    سياسة الخصوصية
+                </button>
+            </div>
+        </div>
+
+        <!-- Policy View -->
+        <div id="policyView" class="view view-hidden w-full min-h-screen bg-gray-100 dark:bg-gray-900 p-6 md:p-12">
+            <!-- Policy Content Container -->
+            <div id="policyContent" class="max-w-4xl mx-auto prose dark:prose-invert lg:prose-xl">
+                <!-- Content will be injected by JavaScript -->
+            </div>
+            <!-- Back Button -->
+            <button id="backButton" aria-label="Return to main page" class="fixed bottom-6 right-6 bg-white dark:bg-gray-800 p-4 rounded-full shadow-xl hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300">
+                <svg id="backArrow" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#0279d7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <!-- Arrow path will be injected by JavaScript -->
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // --- DOM Elements ---
+        const mainView = document.getElementById('mainView');
+        const policyView = document.getElementById('policyView');
+        const policyContent = document.getElementById('policyContent');
+        const showEnglishPolicyBtn = document.getElementById('showEnglishPolicy');
+        const showArabicPolicyBtn = document.getElementById('showArabicPolicy');
+        const backButton = document.getElementById('backButton');
+        const backArrow = document.getElementById('backArrow');
+
+        // --- Policy Texts ---
+        const englishPolicyText = `
+            <h1 class="text-3xl font-bold mb-4" lang="en">Privacy Policy</h1>
+            <p class="text-lg leading-relaxed" lang="en">
+                At Habal Wacky AI, we respect your privacy and are committed to protecting your personal data. We do not collect any personally identifiable information such as email addresses or geographic locations. Users may optionally enter their name, age, and gender solely to enhance the in-app experience. This information helps the AI personalize responses—for example, by addressing users by name or adjusting the tone based on age or gender. All such data is stored locally on your device using localStorage and is never shared with any external servers or third parties. Previous conversations are also saved in localStorage on your device and can be deleted at any time through the settings. By using the app, you agree to this policy. We may update it in the future, and any changes will be communicated within the app. For any inquiries regarding the privacy policy, you can contact us through the support information provided in the app.
+            </p>
+        `;
+
+        const arabicPolicyText = `
+            <h1 class="text-3xl font-bold mb-4 text-right" lang="ar">سياسة الخصوصية</h1>
+            <p class="text-lg leading-relaxed text-right" lang="ar">
+                نحن في تطبيق هبل AI نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية.
+                لا نقوم بجمع أي معلومات تعريفية مثل البريد الإلكتروني أو الموقع الجغرافي.
+                يُطلب من المستخدم بشكل اختياري إدخال اسمه، عمره، وجنسه بهدف تحسين التفاعل داخل التطبيق فقط. هذه المعلومات تُستخدم ليتمكن الذكاء الاصطناعي من تخصيص الردود، مثل مناداة المستخدم باسمه أو تعديل أسلوب الرد حسب عمره أو جنسه.
+                يتم تخزين هذه المعلومات محليًا في جهازك فقط عبر localStorage ولا تتم مشاركتها مع أي خادم خارجي أو جهة ثالثة.
+                المحادثات السابقة يتم تخزينها أيضًا في localStorage على جهازك، ويمكنك حذفها في أي وقت من الإعدادات.
+                باستخدامك للتطبيق، فإنك توافق على هذه السياسة. قد نقوم بتحديثها في المستقبل، وسيتم إعلامك بأي تغييرات داخل التطبيق.
+                لأي استفسار بخصوص سياسة الخصوصية، يمكنك التواصل معنا عبر معلومات الدعم داخل التطبيق.
+            </p>
+        `;
+
+        // --- SVG Paths for Arrows ---
+        const ltrArrow = '<path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />'; // Left arrow
+        const rtlArrow = '<path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />'; // Right arrow
+
+        /**
+         * Switches the view from main to policy.
+         * @param {string} lang - The language of the policy to display ('en' or 'ar').
+         */
+        function showPolicy(lang) {
+            if (lang === 'en') {
+                policyContent.innerHTML = englishPolicyText;
+                policyContent.dir = 'ltr';
+                backArrow.innerHTML = ltrArrow;
+            } else {
+                policyContent.innerHTML = arabicPolicyText;
+                policyContent.dir = 'rtl';
+                backArrow.innerHTML = rtlArrow;
+            }
+            
+            // Switch classes for transition
+            mainView.classList.remove('view-visible');
+            mainView.classList.add('view-hidden');
+            policyView.classList.remove('view-hidden');
+            policyView.classList.add('view-visible');
+            
+            window.scrollTo(0, 0); // Scroll to top of policy
+        }
+
+        /**
+         * Switches the view from policy back to main.
+         */
+        function showMainView() {
+            policyView.classList.remove('view-visible');
+            policyView.classList.add('view-hidden');
+            mainView.classList.remove('view-hidden');
+            mainView.classList.add('view-visible');
+        }
+
+        // --- Event Listeners ---
+        showEnglishPolicyBtn.addEventListener('click', () => showPolicy('en'));
+        showArabicPolicyBtn.addEventListener('click', () => showPolicy('ar'));
+        backButton.addEventListener('click', showMainView);
+    </script>
+
+</body>
+</html>
+
